@@ -95,7 +95,7 @@ create function returnEdad(fechaNacimiento varchar(10))
 	returns double
 begin
 	declare result double;
-	set result = datediff(now(),fechaNacimiento) / 365;
+	set result = floor(datediff(now(),fechaNacimiento)) / 365;
     return result;
 end;
 -- LLamada a la función
