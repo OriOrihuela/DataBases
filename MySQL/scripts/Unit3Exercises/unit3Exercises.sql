@@ -1,5 +1,6 @@
 SET GLOBAL log_bin_trust_function_creators = 1;
 
+
 /* Ejercicio 1: crea una función que devuelva 1 ó 0 si un número es o no divisible por otro. Debe de recibir dos números por parámetros. */
 delimiter //
 drop function if exists return1Or2;
@@ -78,6 +79,7 @@ end;
 -- LLamada al procedimiento
 call showDate(); //
  
+ 
 /* Ejercicio 5: crea una función, que reciba por parámetro una fecha de nacimiento y devuelva la edad de la persona en años. */
 
 /*delimiter //
@@ -101,6 +103,7 @@ end;
 -- LLamada a la función
 select returnEdad('1995-02-05') as 'Edad'; //
 
+
 /* Ejercicio 6: crea una función que devuelva el mayor de tres números pasados como parámetros. */
 delimiter //
 drop function if exists returnBigger;
@@ -114,3 +117,6 @@ end;
 -- LLamada a la función
 select returnBigger(7,6,9); //
 select returnBigger(56,33,45); //
+
+
+/* 
