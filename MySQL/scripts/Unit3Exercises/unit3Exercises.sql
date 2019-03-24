@@ -1,3 +1,4 @@
+USE actividades_tema3;
 SET GLOBAL log_bin_trust_function_creators = 1;
 
 
@@ -12,11 +13,12 @@ begin
 	else
 		return 0;
 	end if;
-end; 
+end //
+delimiter ;
 -- Llamada a la función:  
-select return1Or2(2,3);//-- Resultado = 0
+select return1Or2(2,3);-- Resultado = 0
 -- Llamada a la función:  
-select return1Or2(4,2);//-- Resultado = 1
+select return1Or2(4,2);-- Resultado = 1
 
 
 /* Ejercicio 2: usa las estructuras condicionales para mostrar el día de la semana según un valor de entrada numérico, 1 para domingo, 
@@ -43,8 +45,9 @@ begin
 		set dia = 'Domingo';
 	end if;
     return dia;
-end; 
+end //
 -- LLamada a la función: 
+delimiter ;
 select returnDay(2); //
 
 
@@ -57,9 +60,10 @@ begin
     if returnDay(weekday(now())) = 'Viernes' then
 		select date_format(now(), '%d-%m-%Y') as 'Fecha';
 	end if;
-end;
+end //
 -- Llamada a la función:
-call formatFriday();//
+delimiter ;
+call formatFriday(); 
 
 
 /* Ejercicio 4: Crea un procedimiento que reciba una fecha por parámetro y muestre por pantalla el día de la semana, seguido del número de día, mes y año como se muestra 
@@ -75,13 +79,13 @@ create procedure showDate()
 begin
 SET lc_time_names = 'es_ES';
 	select date_format(now(), '%W, %d de %M de %Y') as 'Fecha';
-end;
+end //
 -- LLamada al procedimiento
-call showDate(); //
+delimiter ;
+call showDate(); 
  
  
 /* Ejercicio 5: crea una función, que reciba por parámetro una fecha de nacimiento y devuelva la edad de la persona en años. */
-
 /*delimiter //
 drop procedure if exists returnAge;
 create procedure returnAge()
@@ -94,14 +98,15 @@ call returnAge(); // */
 delimiter //
 drop function if exists returnEdad;
 create function returnEdad(fechaNacimiento varchar(10))
-	returns double
+	returns int
 begin
-	declare result double;
-	set result = floor(datediff(now(),fechaNacimiento)) / 365;
+	declare result int;
+	set result = datediff(now(),fechaNacimiento) / 365;
     return result;
-end;
+end //
 -- LLamada a la función
-select returnEdad('1995-02-05') as 'Edad'; //
+delimiter ;
+select returnEdad('1995-02-05') as 'Edad';
 
 
 /* Ejercicio 6: crea una función que devuelva el mayor de tres números pasados como parámetros. */
@@ -113,10 +118,53 @@ begin
 	declare result int;
     set result = greatest(number1, number2, number3);
     return result;
-end;
+end;//
 -- LLamada a la función
-select returnBigger(7,6,9); //
-select returnBigger(56,33,45); //
+delimiter ;
+select returnBigger(7,6,9); 
+select returnBigger(56,33,45);
 
 
-/* 
+/* Ejercicio 7: crea un procedimiento con una sentencia while que:
+	- Reciba por parámetro un número entero y muestre por pantalla la suma de todos los
+	números, entre 1 y el pasado como parámetro (ambos incluidos).
+	- Si el número introducido es cero o negativo, se deberá mostrar un mensaje de error. */
+delimiter //
+drop procedure if exists mostrarSuma //
+create procedure mostrarSuma(in numero int(3)) 
+begin
+    declare contador int(3);
+    declare resultado int(3);
+    
+    set contador = numero;
+    set resultado = 0;
+    
+    if numero <= 0 then
+		select "El número es igual o inferior a cero." as 'Error';
+	else
+		while (contador > 1) do
+			set resultado = resultado + contador;
+			set contador = contador - 1;
+		end while;
+    select resultado as Suma;
+	end if;
+end //
+-- LLamada al procedimiento
+delimiter ;
+call mostrarSuma(4);
+call mostrarSuma(3);
+call mostrarSuma(-5);
+
+
+/* Ejercicio 8: Mediante la sentencia repeat, realiza un procedimiento que muestre los números primos que hay desde 0 hasta un número pasado por parámetro */
+delimiter //
+drop procedure if exists mostrarPrimos //
+create procedure mostrarPrimos(numero int)
+begin
+	declare divisor int;
+    declare numeroAMostrar int;
+    
+    set divisor = 2;
+    set numeroAMostrar = 2;
+    
+    
