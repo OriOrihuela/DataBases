@@ -13,3 +13,7 @@ numbers.
 - Create a function, which receives a date of birth by parameter and returns the age of the person in years.
 ## Exercise 6
 - Create a function that returns the largest of three numbers passed as parameters.
+## Exercise 7
+- Create a procedure with a while statement that: 
+    - receive a whole number by parameter and show the sum of all the numbers, between 1 and the past as a parameter (both included).
+    - If the entered number is zero or negative, an error message should be displayed.
