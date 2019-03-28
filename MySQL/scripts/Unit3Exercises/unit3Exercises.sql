@@ -156,7 +156,8 @@ call mostrarSuma(3);
 call mostrarSuma(-5);
 
 
-/* Ejercicio 8: Mediante la sentencia repeat, realiza un procedimiento que muestre los números primos que hay desde 0 hasta un número pasado por parámetro */
+/* Ejercicio 8: Mediante la sentencia repeat, realiza un procedimiento que muestre los números primos que hay desde 0 
+hasta un número pasado por parámetro */
 delimiter //
 drop procedure if exists mostrarPrimos //
 create procedure mostrarPrimos(numero int)
@@ -167,4 +168,22 @@ begin
     set divisor = 2;
     set numeroAMostrar = 2;
     
-    
+    repeat
+		if (divisor < numeroAMostrar) and mod(numeroAMostrar, divisor) != 0 then
+			set divisor = divisor + 1;
+		elseif divisor = numeroAMostrar then
+			select concat(numeroAMostrar);
+            set divisor = 2;
+            set numeroAMostrar = numeroAMostrar + 1;
+		else
+            set divisor = 2;
+            set numeroAMostrar = numeroAMostrar + 1;
+		end if;
+	until numeroAMostrar = numero
+	end repeat;
+end; //
+-- Llamada a la función
+delimiter ;
+call mostrarPrimos(10);
+call mostrarPrimos(20);
+call mostrarPrimos(50);
