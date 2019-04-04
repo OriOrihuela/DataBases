@@ -17,3 +17,5 @@ numbers.
 - Create a procedure with a while statement that: 
     - receive a whole number by parameter and show the sum of all the numbers, between 1 and the past as a parameter (both included).
     - If the entered number is zero or negative, an error message should be displayed.
+## Exercise 8 
+- Using the repeat statement, perform a procedure that shows the prime numbers from 0 up to a number passed by parameter.
