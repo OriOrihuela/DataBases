@@ -163,7 +163,7 @@ drop procedure if exists mostrarPrimos //
 create procedure mostrarPrimos(numero int)
 begin
 	declare divisor int;
-    declare numeroAMostrar int;
+    	declare numeroAMostrar int;
     
     set divisor = 2;
     set numeroAMostrar = 2;
@@ -181,7 +181,7 @@ begin
 		end if;
 	until numeroAMostrar = numero
 	end repeat;
-end; //
+end //
 -- Llamada a la función
 delimiter ;
 call mostrarPrimos(10);
