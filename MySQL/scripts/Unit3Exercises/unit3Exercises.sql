@@ -168,7 +168,7 @@ drop procedure if exists mostrarPrimos //
 create procedure mostrarPrimos(numero int)
 begin
 	declare divisor int;
-    declare numeroAMostrar int;
+    	declare numeroAMostrar int;
     
     set divisor = 2;
     set numeroAMostrar = 2;
@@ -187,12 +187,16 @@ begin
 	until numeroAMostrar = numero
 	end repeat;
 end //
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6f743091c148a661bc452d6bf61d4b1f671da327
 -- Llamada a la función
 delimiter ;
 call mostrarPrimos(10);
 call mostrarPrimos(20);
 call mostrarPrimos(50);
+<<<<<<< HEAD
 
 
 -- Creamos diferentes tablas sobre las que realizar otros ejercicios.
@@ -360,3 +364,5 @@ end //
 -- Llamada de la función
 delimiter ;
 call impPedidos(10);
+=======
+>>>>>>> 6f743091c148a661bc452d6bf61d4b1f671da327
