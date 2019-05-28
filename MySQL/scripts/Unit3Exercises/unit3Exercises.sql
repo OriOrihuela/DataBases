@@ -196,7 +196,6 @@ delimiter ;
 call mostrarPrimos(10);
 call mostrarPrimos(20);
 call mostrarPrimos(50);
-<<<<<<< HEAD
 
 
 -- Creamos diferentes tablas sobre las que realizar otros ejercicios.
@@ -364,5 +363,3 @@ end //
 -- Llamada de la función
 delimiter ;
 call impPedidos(10);
-=======
->>>>>>> 6f743091c148a661bc452d6bf61d4b1f671da327
